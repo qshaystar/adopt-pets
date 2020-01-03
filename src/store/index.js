@@ -9,24 +9,26 @@ Vue.use(VueAxios, axios)
 export default new Vuex.Store({
   state: {
     dogs: [],
-    cats: []
+    cats: [],
+    pet: {}
   },
   actions: {
     getDogs(context) {
       const api = 'http://localhost:3000/dogs';
       axios.get(api).then((response) => {
-        context.commit('DOGS', response.data)
-        console.log(response.data); 
+        context.commit('DOGS', response.data)  
       }); 
     }, 
     getCats(context) {
       const api = 'http://localhost:3000/cats';
-      const vm = this;
       axios.get(api).then((response) => {
         context.commit('CATS', response.data)
-        console.log(response.data);
       });  
     },
+    petProfile(context, pet) {
+      // const api = `http://localhost:3000/${animal}/${id}`;
+      context.commit('PET', pet)
+    }
   },
   mutations: {
     // mutations（改變資料狀態） 
@@ -36,13 +38,11 @@ export default new Vuex.Store({
     },
     CATS(state, payload) {
       state.cats = payload;
+    },
+    PET(state, payload) {
+      state.pet = payload;
     }
   },
-  // getters: {
-  //   dogs(state) {
-  //     return state.dogs;
-  //   }
-  // },
   modules: {
   }
 })

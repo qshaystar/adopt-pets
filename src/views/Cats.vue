@@ -13,7 +13,9 @@
             </b-col>
             <b-col md="6">
               <b-card-body>
-                <div class="pet-title">{{cat.name}}</div> 
+                <router-link :to="`/pets/cat/${cat.id}`">
+                <div class="pet-title" @click="petProfile(cat)">{{cat.name}}</div> 
+                </router-link>
                 <b-card-text>
                   <ul class="mt-3">
                     <li>品種：{{cat.breed}}</li>
@@ -44,14 +46,10 @@ import { mapState, mapActions } from 'vuex';
       ...mapState(['cats'])
     },
     methods: {
-      ...mapActions(['getCats'])
-      // getCats() {
-      //   const api = 'http://localhost:3000/cats';
-      //   const vm = this;
-      //   this.axios.get(api).then((response) => {
-      //     vm.cats = response.data;
-      //   }); 
-      // },
+      ...mapActions(['getCats']),
+      petProfile(pet) {
+        this.$store.dispatch('petProfile', pet)
+      }
     },
     created() {
       this.getCats();
