@@ -9,7 +9,7 @@
         <b-card no-body class="overflow-hidden">
           <b-row no-gutters>
             <b-col md="6">
-              <b-card-img src="https://picsum.photos/400/400/?image=20" class="rounded-0"></b-card-img>
+              <b-card-img :src="cat.imgUrl" class="rounded-0"></b-card-img>
             </b-col>
             <b-col md="6">
               <b-card-body>

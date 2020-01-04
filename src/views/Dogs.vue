@@ -4,37 +4,40 @@
 
     <b-row>
       <b-col cols="12" md="6" xl="3"
+        class="mb-3"
         v-for="(dog, index) in dogs" :key="index"
       >
         <b-card
-          img-src="https://picsum.photos/600/300/?image=25"
-          img-alt="Image"
-          img-top
+          no-body
           tag="article" 
           border-variant="warning"
           header-bg-variant="warning"
           class="mb-2"
         >
-          
-          <template v-slot:header >
+          <b-card-img :src="dog.imgUrl" img-alt="dog" top></b-card-img>
+          <b-card-header header-bg-variant="warning">
             <h4 class="mb-0">{{dog.name}}</h4>
-          </template>
+          </b-card-header>
+      
+          <b-card-body>
+  
+            <b-card-text>
+              <ul class="mt-3">
+                <li>品種：{{dog.breed}}</li>
+                <li>性別：{{dog.gender}}</li>
+                <li>年齡：{{dog.age}}</li>
+              </ul>  
+            </b-card-text>
 
-          <b-card-text>
-            <ul class="mt-3">
-              <li>品種：{{dog.breed}}</li>
-              <li>性別：{{dog.gender}}</li>
-              <li>年齡：{{dog.age}}</li>
-            </ul>  
-          </b-card-text>
+            <router-link :to="`/pets/dog/${dog.id}`">
+              <b-button  variant="primary"
+              @click="petProfile(dog)"
+              >
+                Go somewhere
+              </b-button>
+            </router-link>
 
-          <router-link :to="`/pets/dog/${dog.id}`">
-            <b-button  variant="primary"
-            @click="petProfile(dog)"
-            >
-              Go somewhere
-            </b-button>
-          </router-link>
+          </b-card-body>  
         </b-card>
       </b-col>
     </b-row>
