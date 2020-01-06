@@ -34,13 +34,13 @@ export default new Vuex.Store({
     // mutations（改變資料狀態） 
     // actions（操作行為）只能取得資料，不能改變狀態
     DOGS(state, payload) {
-      state.dogs = payload;  
+      state.dogs = payload.reverse();  
     },
     CATS(state, payload) {
-      state.cats = payload;
+      state.cats = payload.reverse();
     },
     PET(state, payload) {
-      state.pet = payload;
+      state.pet = payload;      
     }
   },
   modules: {

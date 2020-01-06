@@ -1,34 +1,54 @@
 <template>
   <div class="cats">
-    <h1>Cats</h1>
-    <b-row>
-      <b-col cols="12" md="6" xl="4"
-      class="mb-5" 
-      v-for="(cat, index) in cats" :key="index"
-      >
-        <b-card no-body class="overflow-hidden">
-          <b-row no-gutters>
-            <b-col md="6">
-              <b-card-img :src="cat.imgUrl" class="rounded-0"></b-card-img>
-            </b-col>
-            <b-col md="6">
+    <div class="header">
+      <b-container>
+        <h2>認養可人貓咪</h2>
+      </b-container>  
+    </div>
+
+    <div class="content">
+      <b-container>
+        <b-row>
+          <b-col cols="12" md="6" xl="3"
+            class="mb-3"
+            v-for="(cat, index) in cats" :key="index"
+          >
+            <b-card
+              no-body
+              class="mb-2 shadow-sm pet-card"
+            >
+              <b-card-img :src="cat.imgUrl==null? 'https://i.imgur.com/MxUK6xs.jpg':cat.imgUrl" 
+                img-alt="cat" top
+              >
+              </b-card-img>
+              <b-card-header header-bg-variant="primary">
+                <h4 class="mb-0">{{cat.name}}</h4>
+              </b-card-header>
+          
               <b-card-body>
-                <router-link :to="`/pets/cat/${cat.id}`">
-                <div class="pet-title" @click="petProfile(cat)">{{cat.name}}</div> 
-                </router-link>
                 <b-card-text>
                   <ul class="mt-3">
-                    <li>品種：{{cat.breed}}</li>
-                    <li>性別：{{cat.gender}}</li>
-                    <li>年齡：{{cat.age}}</li>
+                    <li><b>品種：</b>{{cat.breed}}</li>
+                    <li><b>性別：</b>{{cat.gender}}</li>
+                    <li><b>年齡：</b>{{cat.age}}</li>
                   </ul>  
                 </b-card-text>
-              </b-card-body>
-            </b-col>
-          </b-row>
-        </b-card>
-      </b-col>
-    </b-row>
+
+                <router-link :to="`/pets/cat/${cat.id}`">
+                  <b-button variant="outline-dark"
+                  rounded="0"
+                  @click="petProfile(cat)"
+                  >
+                    詳細資訊
+                  </b-button>
+                </router-link>
+
+              </b-card-body>  
+            </b-card>
+          </b-col>
+        </b-row>
+      </b-container>
+    </div>
 
   </div>
 </template>
@@ -43,7 +63,7 @@ import { mapState, mapActions } from 'vuex';
       };
     },
     computed: {
-      ...mapState(['cats'])
+      ...mapState(['cats']),
     },
     methods: {
       ...mapActions(['getCats']),
@@ -57,3 +77,16 @@ import { mapState, mapActions } from 'vuex';
   }
 
 </script>
+
+<style lang="less" scoped>
+ .header {
+    text-align: right;
+    background-position: bottom;
+    background-image: -webkit-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../assets/cat-header.jpg);
+    background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../assets/cat-header.jpg);
+    background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../assets/cat-header.jpg);
+    background-image: -o-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../assets/cat-header.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../assets/cat-header.jpg);
+  }
+
+</style>
