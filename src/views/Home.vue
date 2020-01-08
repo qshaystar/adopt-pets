@@ -284,7 +284,7 @@ export default {
       this.tempPet.size="null";
     },
     addPet() {
-      const api = `http://localhost:3000/${this.species}`;
+      const api = `https://infinite-sierra-08115.herokuapp.com/${this.species}`;
       const vm = this;
       this.axios.post(api, vm.tempPet ).then((response) => {
           vm.show=false;

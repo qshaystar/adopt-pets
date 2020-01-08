@@ -14,13 +14,13 @@ export default new Vuex.Store({
   },
   actions: {
     getDogs(context) {
-      const api = 'http://localhost:3000/dogs';
+      const api = 'https://infinite-sierra-08115.herokuapp.com/dogs';
       axios.get(api).then((response) => {
         context.commit('DOGS', response.data)  
       }); 
     }, 
     getCats(context) {
-      const api = 'http://localhost:3000/cats';
+      const api = 'https://infinite-sierra-08115.herokuapp.com/cats';
       axios.get(api).then((response) => {
         context.commit('CATS', response.data)
       });  
