@@ -1,19 +1,30 @@
-# adopt-pets
+# Adopt-Pets
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+使用Vue框架打造寵物認養平台的SPA系統，預計包含CRUD完整功能。
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### 主要技術
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Vue Router
+VueX
+Bootstrap Vue
+Axios 串接API
+使用json-server製作API文件，並部署到Heroku
+
+
+### 目前功能
+
+* 想領養寵物者 - 可點選待領養的寵物們，觀看詳細資料。
+
+* 想送養寵物者 - 可點“送養”按鈕，填寫資訊會及時出現在首頁。
+
+
+### 待完善部分
+
+* 使用者填完送養資訊後，可以做編輯及刪除。
+
+* 會員驗證功能，讓每位使用者只能編輯自己的內容。
+
+* 完善RWD的編排。
+
+* 程式碼尚有需要簡化修改的地方，需做調整。
